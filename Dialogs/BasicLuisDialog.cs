@@ -53,7 +53,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
 		private async Task ShowLuisResult(IDialogContext context, LuisResult result) 
         {
-            await context.PostAsync($"You have reached {result.Intents[0].Intent}. You said2222: {result.Query}");
+			await context.PostAsync($"Received text: {result.Query}, Intent: {result.Intents[0].Intent} Entities: {string.Join(", " ,result.Entities)}");
             context.Wait(MessageReceived);
         }
     }
