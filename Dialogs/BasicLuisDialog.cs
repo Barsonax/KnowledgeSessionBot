@@ -1,5 +1,6 @@
 using System;
 using System.Configuration;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Microsoft.Bot.Builder.Dialogs;
@@ -53,7 +54,7 @@ namespace Microsoft.Bot.Sample.LuisBot
 
 		private async Task ShowLuisResult(IDialogContext context, LuisResult result) 
         {
-			await context.PostAsync($"Received text: {result.Query}, Intent: {result.Intents[0].Intent} Entities: {string.Join(", " ,result.Entities)}");
+			await context.PostAsync($"Received text: {result.Query}, Intent: {result.Intents[0].Intent} Entities: {string.Join(", " ,result.Entities.Select(x => x.Entity))}");
             context.Wait(MessageReceived);
         }
     }
