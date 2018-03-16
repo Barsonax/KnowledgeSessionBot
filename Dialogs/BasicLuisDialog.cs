@@ -27,25 +27,31 @@ namespace Microsoft.Bot.Sample.LuisBot
 
         // Go to https://luis.ai and create a new intent, then train/publish your luis app.
         // Finally replace "Gretting" with the name of your newly created intent in the following handler
-        [LuisIntent("Greeting")]
-        public async Task GreetingIntent(IDialogContext context, LuisResult result)
+        [LuisIntent("SearchKnowledgeSession")]
+        public async Task SearchKnowledgeSession(IDialogContext context, LuisResult result)
         {
             await this.ShowLuisResult(context, result);
         }
 
-        [LuisIntent("Cancel")]
-        public async Task CancelIntent(IDialogContext context, LuisResult result)
-        {
-            await this.ShowLuisResult(context, result);
-        }
+	    [LuisIntent("NextKnowledgeSession")]
+	    public async Task NextKnowledgeSession(IDialogContext context, LuisResult result)
+	    {
+		    await this.ShowLuisResult(context, result);
+	    }
 
-        [LuisIntent("Help")]
-        public async Task HelpIntent(IDialogContext context, LuisResult result)
-        {
-            await this.ShowLuisResult(context, result);
-        }
+	    [LuisIntent("ListKnowledgeSessions")]
+	    public async Task ListKnowledgeSessions(IDialogContext context, LuisResult result)
+	    {
+		    await this.ShowLuisResult(context, result);
+	    }
 
-        private async Task ShowLuisResult(IDialogContext context, LuisResult result) 
+	    [LuisIntent("CreateKnowledgeSession")]
+	    public async Task CreateKnowledgeSession(IDialogContext context, LuisResult result)
+	    {
+		    await this.ShowLuisResult(context, result);
+	    }
+
+		private async Task ShowLuisResult(IDialogContext context, LuisResult result) 
         {
             await context.PostAsync($"You have reached {result.Intents[0].Intent}. You said2222: {result.Query}");
             context.Wait(MessageReceived);
